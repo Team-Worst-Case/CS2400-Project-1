@@ -128,7 +128,7 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
    {
       checkIntegrity();
       T result = remove(numberOfEntries - 1);
-      return result; // STUB
+      return null; // STUB
    }
    
 	/** Removes one occurrence of a given entry from this bag.
@@ -182,17 +182,17 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
    // Declare 'union' method.
    public BagInterface <T> union(BagInterface<T> otherBag)
    {
-      // STUB
+      return null; // STUB
    }
    // Declare 'intersection' method.
    public BagInterface <T> intersection(BagInterface<T> otherBag)
    {
-      // STUB
+      return null; // STUB
    }
    //Declare 'difference' method.
    public BagInterface <T> difference(BagInterface<T> otherBag)
    {
-      // STUB
+      return null; // STUB
    }
    
 }
