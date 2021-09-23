@@ -14,7 +14,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 	public LinkedBag()
 	{
 		firstNode = null;
-      numberOfEntries = 0;
+      	numberOfEntries = 0;
 	}
 
 	/** Adds a new entry to this bag.
@@ -22,11 +22,11 @@ public final class LinkedBag<T> implements BagInterface<T>
 	    @return  True. */
 	public boolean add(T newEntry) // OutOfMemoryError possible
 	{
-      // Add to beginning of chain:
+    	// Add to beginning of chain:
 		Node newNode = new Node(newEntry);
 		newNode.next = firstNode;  // Make new node reference rest of chain
                                  // (firstNode is null if chain is empty)
-      firstNode = newNode;       // New node is at beginning of chain
+      	firstNode = newNode;       // New node is at beginning of chain
 		numberOfEntries++;
       
 		return true;
@@ -36,22 +36,22 @@ public final class LinkedBag<T> implements BagInterface<T>
        @return  A newly allocated array of all the entries in this bag. */
 	public T[] toArray()
 	{
-      // The cast is safe because the new array contains null entries.
-      @SuppressWarnings("unchecked")
-      T[] result = (T[])new Object[numberOfEntries]; // Unchecked cast
-      
-      int index = 0;
-      Node currentNode = firstNode;
-      while ((index < numberOfEntries) && (currentNode != null))
-      {
-         result[index] = currentNode.data;
-         index++;
-         currentNode = currentNode.next;
-      }
-      
-      return result;
-      // Note: The body of this method could consist of one return statement,
-      // if you call Arrays.copyOf
+		// The cast is safe because the new array contains null entries.
+		@SuppressWarnings("unchecked")
+		T[] result = (T[])new Object[numberOfEntries]; // Unchecked cast
+		
+		int index = 0;
+		Node currentNode = firstNode;
+		while ((index < numberOfEntries) && (currentNode != null))
+		{
+			result[index] = currentNode.data;
+			index++;
+			currentNode = currentNode.next;
+		}
+		
+		return result;
+		// Note: The body of this method could consist of one return statement,
+		// if you call Arrays.copyOf
 	}
    
 	/** Sees whether this bag is empty.
@@ -155,6 +155,45 @@ public final class LinkedBag<T> implements BagInterface<T>
 	   return found;
    }
 
+	/** Creates a new bag that combines the contents of this bag and otherBag.
+		@param otherBag The bag that is to be added.
+  		@return  A combined bag */
+	public BagInterface<T> union(BagInterface<T> otherBag)
+	{
+		LinkedBag<T> unionBag = new LinkedBag<T>();
+		LinkedBag<T> tempBag = (LinkedBag<T>)otherBag;
+
+		Node currentNode = firstNode;
+		int i;
+			// add entries to new from this bag
+		for (i = 0; i < numberOfEntries; i++) {
+			unionBag.add(currentNode.getData());
+			currentNode = currentNode.getNextNode();
+		}	
+		// add entries to new bag from the second bag
+		for (i = 0; i < otherBag.getCurrentSize(); i++) {
+			unionBag.add(currentNode.getData());
+			currentNode = currentNode.getNextNode();
+		}
+		return unionBag;
+	}
+
+	/** Creates a new bag that contains overlapping entries of this bag and otherBag.
+		@param otherBag The bag that is to be added.
+  		@return A bag with overlapping entries */
+	public BagInterface<T> intersection(BagInterface<T> otherBag)
+	{
+		return null; // STUB
+	}
+	
+	/** Creates a new bag that contains only unique entries of this bag and otherBag.
+		@param otherBag The bag that is to be added.
+  		@return A bag with unique entries */
+	public BagInterface<T> difference(BagInterface<T> otherBag)
+	{
+		return null; // STUB
+	}
+
 	private class Node
 	{
 	  private T    data; // Entry in bag
@@ -170,5 +209,5 @@ public final class LinkedBag<T> implements BagInterface<T>
 			data = dataPortion;
 			next = nextNode;	
 		}
-	}
+	}	
 }
