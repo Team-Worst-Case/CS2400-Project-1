@@ -1,7 +1,7 @@
 Members:
 Christopher Gomez
 Joseph Setiawan
-// name
+Roberto Tabares
 
 Contributions:
 // contributions here
