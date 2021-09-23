@@ -44,4 +44,10 @@ public interface BagInterface<T>
        @return  A newly allocated array of all the entries in the bag. 
                 Note: If the bag is empty, the returned array is empty. */ 
    public T[] toArray();
+
+   public BagInterface<T> union(BagInterface<T>other); // declare union method
+
+   public BagInterface<T> intersection(BagInterface<T> other); // declare intersection method
+
+   public BagInterface<T> difference(BagInterface<T> other); // declare difference method
 } // end BagInterface
