@@ -126,21 +126,44 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
                 was successful, or null. */
 	public T remove()
    {
-      return null; // STUB
+      checkIntegrity();
+      T result = remove(numberOfEntries - 1);
+      return result; // STUB
    }
    
 	/** Removes one occurrence of a given entry from this bag.
        @param anEntry  The entry to be removed.
        @return  True if the removal was successful, or false if not. */
+
+   /** While loop goes through entries in 'bag', and if entry matches 
+       item in bag, returns null. */
+    
    public boolean remove(T anEntry)
    {
-      return false; // STUB
+      int i = 0;
+      while (i < numberOfEntries)
+      {
+         if (bag[i].equals(anEntry))
+         {
+            if (i < numberOfEntries)
+            {
+               bag[i] = bag[numberOfEntries - 1];
+               bag[numberOfEntries - 1] = null;
+               numberOfEntries--;
+               return true;
+            }
+         }
+         i++;
+      }
+      return false; 
    }
 	
 	/** Removes all entries from this bag. */
 	public void clear()
    {
-      // STUB
+      for (int index = 0; index < numberOfEntries; index++)
+         bag[index] = null;
+      numberOfEntries = 0;
    }
    
    // Returns true if the array bag is full, or false if not.
@@ -155,4 +178,21 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       if (!integrityOK)
          throw new SecurityException("ArrayBag object is corrupt.");
    }
+
+   // Declare 'union' method.
+   public BagInterface <T> union(BagInterface<T> otherBag)
+   {
+      // STUB
+   }
+   // Declare 'intersection' method.
+   public BagInterface <T> intersection(BagInterface<T> otherBag)
+   {
+      // STUB
+   }
+   //Declare 'difference' method.
+   public BagInterface <T> difference(BagInterface<T> otherBag)
+   {
+      // STUB
+   }
+   
 }
