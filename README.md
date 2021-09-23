@@ -1,6 +1,6 @@
 Members:
 Christopher Gomez
-// name
+Joseph Setiawan
 // name
 
 Contributions:
