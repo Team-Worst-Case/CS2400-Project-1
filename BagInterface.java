@@ -45,15 +45,15 @@ public interface BagInterface<T>
                 Note: If the bag is empty, the returned array is empty. */ 
    public T[] toArray();
 
-   @param otherBag // The bag that is to be added.
-   @return // A combined bag
+   // @param otherBag The bag that is to be added.
+   // @return  A combined bag
    public BagInterface<T> union(BagInterface<T>otherBag); // Creates a new bag that combines the contents of this bag and otherBag.
 
-   @param otherBag // The bag that is to be added.
-   @return // A bag with overlapping entries
+   // @param otherBag The bag that is to be added.
+   // @return A bag with overlapping entries
    public BagInterface<T> intersection(BagInterface<T> otherBag); // Creates a new bag that contains overlapping entries of this bag and otherBag.
 
-   @param otherBag // The bag that is to be added.
-   @return // A bag with unique entries
+   // @param otherBag The bag that is to be added.
+   // @return A bag with unique entries
    public BagInterface<T> difference(BagInterface<T> otherBag); // Creates a new bag that contains only unique entries of this bag and otherBag.
 } // end BagInterface
