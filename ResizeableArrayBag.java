@@ -128,7 +128,7 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
    {
       checkIntegrity();
       T result = remove(numberOfEntries - 1);
-      return null; // STUB
+      return result; 
    }
    
 	/** Removes one occurrence of a given entry from this bag.
@@ -182,17 +182,58 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
    // Declare 'union' method.
    public BagInterface <T> union(BagInterface<T> otherBag)
    {
-      return null; // STUB
+      BagInterface <T> result = new ResizeableArrayBag <>();
+      T[] mine = this.toArray();
+
+      for (T elem : mine)
+      {
+         result.add(elem);
+      }
+      return result; 
    }
    // Declare 'intersection' method.
    public BagInterface <T> intersection(BagInterface<T> otherBag)
    {
-      return null; // STUB
+      BagInterface <T> result = new ResizeableArrayBag <>();
+      BagInterface <T> finalResult = new ResizeableArrayBag<>();
+      T[] mine = this.toArray();
+
+      for (T elem : mine)
+      {
+         result.add(elem);
+      }
+
+      T[] others = otherBag.toArray();
+
+      for (T elem : others)
+      {
+         if (result.contains(elem))
+         {
+            finalResult.add(elem);
+         }
+      }
+      return finalResult; 
    }
    //Declare 'difference' method.
    public BagInterface <T> difference(BagInterface<T> otherBag)
    {
-      return null; // STUB
+      BagInterface <T> result = new ResizeableArrayBag <>();
+      T[] mine = this.toArray();
+
+      for (T elem : mine)
+      {
+         result.add(elem);
+      }
+      
+      T[] others = otherBag.toArray();
+      for (T elem : others)
+      {
+         if (result.contains(elem))
+         {
+            result.remove(elem);
+         }
+      }
+      return result; 
    }
    
 }
