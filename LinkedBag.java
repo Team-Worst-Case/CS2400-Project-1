@@ -160,21 +160,19 @@ public final class LinkedBag<T> implements BagInterface<T>
   		@return  A combined bag */
 	public BagInterface<T> union(BagInterface<T> otherBag)
 	{
+		T[] array = toArray();
+		T[] otherArray = otherBag.toArray();
 		LinkedBag<T> unionBag = new LinkedBag<T>();
-		LinkedBag<T> tempBag = (LinkedBag<T>)otherBag;
 
-		Node currentNode = firstNode;
 		int i;
 			// add entries to new from this bag
-		for (i = 0; i < numberOfEntries; i++) {
-			unionBag.add(currentNode.getData());
-			currentNode = currentNode.getNextNode();
-		}	
+		for (i = 0; i < numberOfEntries; i++)
+			unionBag.add(array[i]);
+
 		// add entries to new bag from the second bag
-		for (i = 0; i < otherBag.getCurrentSize(); i++) {
-			unionBag.add(currentNode.getData());
-			currentNode = currentNode.getNextNode();
-		}
+		for (i = 0; i < otherBag.getCurrentSize() + numberOfEntries; i++)
+			unionBag.add(otherArray[i]);
+
 		return unionBag;
 	}
 
