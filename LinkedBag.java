@@ -76,8 +76,8 @@ public final class LinkedBag<T> implements BagInterface<T>
 		T result = null;
 		if (firstNode != null)
 		{
-			result = firstNode.getData();
-			firstNode = firstNode.getNextNode(); // Remove first node from chain
+			result = firstNode.data;
+			firstNode = firstNode.next; // Remove first node from chain
 			numberOfEntries--;
 		}
 		return result;
@@ -94,9 +94,9 @@ public final class LinkedBag<T> implements BagInterface<T>
 		if (nodeN != null)
 		{
 				// Replace located entry with entry in first node
-			nodeN.setData(firstNode.getData());
+			nodeN = firstNode;
 				// Remove first node
-			firstNode = firstNode.getNextNode();
+			firstNode = firstNode.next;
 
 				numberOfEntries--;
 
@@ -124,13 +124,13 @@ public final class LinkedBag<T> implements BagInterface<T>
 		Node currentNode = firstNode;
 		while ((counter < numberOfEntries) && (currentNode != null))
 		{
-			if (anEntry.equals(currentNode.getData()))
+			if (anEntry.equals(currentNode.data))
 			{
 				frequency++;
 			}
 
 			counter++;
-			currentNode = currentNode.getNextNode();
+			currentNode = currentNode.next;
 		}
 
 		return frequency;
@@ -146,10 +146,10 @@ public final class LinkedBag<T> implements BagInterface<T>
 
 	   while (!found && (currentNode != null))
 	   {
-			if (anEntry.equals(currentNode.getData()))
+			if (anEntry.equals(currentNode.data))
 				found = true;
 			else
-				currentNode = currentNode.getNextNode();
+				currentNode = currentNode.next;
 	   }
 
 	   return found;
@@ -160,21 +160,19 @@ public final class LinkedBag<T> implements BagInterface<T>
   		@return  A combined bag */
 	public BagInterface<T> union(BagInterface<T> otherBag)
 	{
+		T[] array = toArray();
+		T[] otherArray = otherBag.toArray();
 		LinkedBag<T> unionBag = new LinkedBag<T>();
-		LinkedBag<T> tempBag = (LinkedBag<T>)otherBag;
 
-		Node currentNode = firstNode;
 		int i;
 			// add entries to new from this bag
-		for (i = 0; i < numberOfEntries; i++) {
-			unionBag.add(currentNode.getData());
-			currentNode = currentNode.getNextNode();
-		}	
+		for (i = 0; i < numberOfEntries; i++)
+			unionBag.add(array[i]);
+
 		// add entries to new bag from the second bag
-		for (i = 0; i < otherBag.getCurrentSize(); i++) {
-			unionBag.add(currentNode.getData());
-			currentNode = currentNode.getNextNode();
-		}
+		for (i = 0; i < otherBag.getCurrentSize() + numberOfEntries; i++)
+			unionBag.add(otherArray[i]);
+
 		return unionBag;
 	}
 
@@ -209,5 +207,22 @@ public final class LinkedBag<T> implements BagInterface<T>
 			data = dataPortion;
 			next = nextNode;	
 		}
-	}	
+
+		private T getReferenceTo(T anEntry)
+		{
+			boolean found = false;
+			Node currentNode = firstNode;
+			while (!found && (currentNode != null))
+			{
+				if (anEntry.equals(currentNode.data))
+				{
+					found = true;
+					
+				} else
+					currentNode = currentNode.next;
+			return currentNode.data;
+			}
+		}
+	}
+
 }

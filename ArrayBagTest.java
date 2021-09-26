@@ -1,5 +1,4 @@
-public class ArrayBagTest {
-    import java.util.Arrays;
+ import java.util.Arrays;
     
     public class ArrayBagTest{
         
