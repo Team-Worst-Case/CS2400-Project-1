@@ -220,9 +220,9 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       BagInterface <T> result = new ResizeableArrayBag <>();
       T[] mine = this.toArray();
 
-      for (T elem : mine)
+      for (T element : mine)
       {
-         result.add(elem);
+         result.add(element);
       }
       
       T[] others = otherBag.toArray();
