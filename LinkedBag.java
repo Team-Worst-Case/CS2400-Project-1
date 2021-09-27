@@ -208,7 +208,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 			next = nextNode;	
 		}
 
-		private T getReferenceTo(T anEntry) 
+		private T getReferenceTo(T anEntry) // no change
 		{
 			boolean found = false;
 			Node currentNode = firstNode;
