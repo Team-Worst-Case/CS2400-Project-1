@@ -190,6 +190,12 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
    public BagInterface <T> union(BagInterface<T> otherBag)
    {
       BagInterface <T> result = new ResizeableArrayBag <>();
+      
+      T[] others = otherBag.toArray();
+      for (T elem: others) {
+         result.add(elem);
+      }
+
       T[] mine = this.toArray();
 
       for (T elem : mine)
