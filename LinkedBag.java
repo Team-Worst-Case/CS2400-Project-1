@@ -94,7 +94,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 		if (nodeN != null)
 		{
 				// Replace located entry with entry in first node
-			nodeN = firstNode;
+			nodeN.data = firstNode.data; // nodeN to nodeN.data - same to 'firstNode'
 				// Remove first node
 			firstNode = firstNode.next;
 
@@ -194,8 +194,8 @@ public final class LinkedBag<T> implements BagInterface<T>
 
 	private class Node
 	{
-	  private T    data; // Entry in bag
-	  private Node next; // Link to next node
+	  	private T    data; // Entry in bag
+	  	private Node next; // Link to next node
 
 		private Node(T dataPortion)
 		{
@@ -208,7 +208,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 			next = nextNode;	
 		}
 
-		private T getReferenceTo(T anEntry)
+		private T getReferenceTo(T anEntry) 
 		{
 			boolean found = false;
 			Node currentNode = firstNode;
@@ -218,10 +218,15 @@ public final class LinkedBag<T> implements BagInterface<T>
 				{
 					found = true;
 					
-				} else
+				} 
+				else
+				{
 					currentNode = currentNode.next;
-			return currentNode.data;
+				}
 			}
+			return currentNode;
+			
+			
 		}
 	}
 
