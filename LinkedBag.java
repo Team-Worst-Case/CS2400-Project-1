@@ -174,7 +174,7 @@ public final class LinkedBag<T> implements BagInterface<T>
 		LinkedBag<T> unionBag = new LinkedBag<T>();
 
 		int i;
-			// add entries to new from this bag
+		// add entries to new from this bag
 		for (i = 0; i < numberOfEntries; i++)
 			unionBag.add(array[i]);
 
@@ -190,7 +190,33 @@ public final class LinkedBag<T> implements BagInterface<T>
   		@return A bag with overlapping entries */
 	public BagInterface<T> intersection(BagInterface<T> otherBag)
 	{
-		return null; // STUB
+		BagInterface<T> intersectionBag = new LinkedBag<T>();
+		BagInterface<T> tempBag = new LinkedBag<T>();
+		Node currentNode = ((LinkedBag<T>) otherBag).firstNode;
+		
+		// copy entries from otherBag to tempBag
+		while(currentNode != null)
+		{
+			tempBag.add(currentNode.data);
+			currentNode = currentNode.next;
+		}
+		
+		currentNode = firstNode;
+		while(currentNode != null)
+		{
+			if (tempBag.contains(currentNode.data))
+			{
+				// add the current entry of this bag to intersectionBag
+				intersectionBag.add(currentNode.data);
+				
+				// remove the current entry of this bag from tempBag
+				tempBag.remove(currentNode.data);
+			}
+			
+			currentNode = currentNode.next;
+		}
+		
+		return intersectionBag;
 	}
 	
 	/** Creates a new bag that contains only unique entries of this bag and otherBag.
@@ -198,7 +224,32 @@ public final class LinkedBag<T> implements BagInterface<T>
   		@return A bag with unique entries */
 	public BagInterface<T> difference(BagInterface<T> otherBag)
 	{
-		return null; // STUB
+		// declare the required objects and variables
+		BagInterface<T> differenceBag = new LinkedBag<T>();
+		Node currentNode = firstNode;
+	
+		// copy all entries from this bag to differenceBag
+		while (currentNode != null)
+		{          
+			differenceBag.add(currentNode.data);              
+			currentNode = currentNode.next;
+		}
+	
+		// repeat the loop for all entries in the anotherBag
+		currentNode = ((LinkedBag<T>) otherBag).firstNode;
+		while (currentNode != null)
+		{
+			// check if differenceBag contains the current entry of this bag
+			if(differenceBag.contains(currentNode.data))
+			{
+				// remove the current entry from the differenceBag
+				differenceBag.remove(currentNode.data);
+			}
+		
+			currentNode = currentNode.next;
+		}      
+	
+		return differenceBag;
 	}
 
 	private class Node
