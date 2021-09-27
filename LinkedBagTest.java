@@ -15,8 +15,11 @@ public class LinkedBagTest {
       b1.add("e");
 
       System.out.println(Arrays.toString(b1.union(b2).toArray()));  // test union, intersection, and difference method.
+      System.out.println("Correct ouput: [b, b, d, a, b, c, e]");
       System.out.println(Arrays.toString(b1.intersection(b2).toArray()));
+      System.out.println("Correct ouput: [b]");
       System.out.println(Arrays.toString(b1.difference(b2).toArray()));
+      System.out.println("Correct ouput: [a, c, e, d]");
 
     }
 }
