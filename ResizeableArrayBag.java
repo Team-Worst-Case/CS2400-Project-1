@@ -127,8 +127,15 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
 	public T remove()
    {
       checkIntegrity();
-      T result = remove(numberOfEntries - 1);
-      return result; 
+
+      T result = null;
+      if (numberOfEntries > 0)
+      {
+         result = bag[numberOfEntries - 1];
+         bag[numberOfEntries - 1] = null;
+         numberOfEntries -= 1;
+      }
+      return result;
    }
    
 	/** Removes one occurrence of a given entry from this bag.
