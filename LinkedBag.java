@@ -89,7 +89,16 @@ public final class LinkedBag<T> implements BagInterface<T>
 	public boolean remove(T anEntry)
 	{
 		boolean result = false;
-		Node nodeN = getReferenceTo(anEntry);
+		Node nodeN  = firstNode;
+
+		boolean found = false;
+		while (!found && (nodeN  != null))
+		{
+			if (anEntry.equals(nodeN .data))
+				found = true;
+			else
+			nodeN  = nodeN.next;
+		}
 
 		if (nodeN != null)
 		{
@@ -206,27 +215,6 @@ public final class LinkedBag<T> implements BagInterface<T>
 		{
 			data = dataPortion;
 			next = nextNode;	
-		}
-
-		private T getReferenceTo(T anEntry) // no change
-		{
-			boolean found = false;
-			Node currentNode = firstNode;
-			while (!found && (currentNode != null))
-			{
-				if (anEntry.equals(currentNode.data))
-				{
-					found = true;
-					
-				} 
-				else
-				{
-					currentNode = currentNode.next;
-				}
-			}
-			return currentNode;
-			
-			
 		}
 	}
 
