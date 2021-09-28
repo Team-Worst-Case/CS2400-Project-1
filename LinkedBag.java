@@ -174,16 +174,38 @@ public final class LinkedBag<T> implements BagInterface<T>
 		LinkedBag<T> unionBag = new LinkedBag<T>();
 
 		int i;
-		// add entries to new from this bag
-		for (i = 0; i < numberOfEntries; i++)
-			unionBag.add(array[i]);
-
 		// add entries to new bag from the second bag
 		for (i = 0; i < otherBag.getCurrentSize(); i++)
 			unionBag.add(otherArray[i]);
 
+		// add entries to new from this bag
+		for (i = 0; i < numberOfEntries; i++)
+			unionBag.add(array[i]);
+
 		return unionBag;
 	}
+
+	/** Creates a new bag that combines the contents of aBag and otherBag.
+		@param aBag first bag that is to be added.
+		@param otherBag second bag that is to be added.
+  		@return  A combined bag */
+		  public BagInterface<T> union(BagInterface<T> aBag, BagInterface<T> otherBag)
+		  {
+			  T[] array = aBag.toArray();
+			  T[] otherArray = otherBag.toArray();
+			  LinkedBag<T> unionBag = new LinkedBag<T>();
+	  
+			  int i;
+			  // add entries to new bag from the second bag
+			  for (i = otherBag.getCurrentSize() - 1; i >= 0; i--)
+				  unionBag.add(otherArray[i]);
+
+			  // add entries to new from this bag
+			  for (i = aBag.getCurrentSize() - 1; i >= 0; i--)
+				  unionBag.add(array[i]);
+	  
+			  return unionBag;
+		  }
 
 	/** Creates a new bag that contains overlapping entries of this bag and otherBag.
 		@param otherBag The bag that is to be added.
@@ -235,21 +257,37 @@ public final class LinkedBag<T> implements BagInterface<T>
 			currentNode = currentNode.next;
 		}
 	
-		// repeat the loop for all entries in the anotherBag
+		// repeat the loop for all entries in otherBag
 		currentNode = ((LinkedBag<T>) otherBag).firstNode;
 		while (currentNode != null)
-		{
 			// check if differenceBag contains the current entry of this bag
-			if(differenceBag.contains(currentNode.data))
-			{
+			if (differenceBag.contains(currentNode.data))
 				// remove the current entry from the differenceBag
 				differenceBag.remove(currentNode.data);
-			}
-		
+			else
+				currentNode = currentNode.next;
+
+		BagInterface<T> tempBag = new LinkedBag<T>();
+		currentNode = ((LinkedBag<T>) otherBag).firstNode;
+
+		// copy all entries from otherBag to differenceBag
+		while (currentNode != null)
+		{          
+			tempBag.add(currentNode.data);              
 			currentNode = currentNode.next;
-		}      
+		}
 	
-		return differenceBag;
+		// repeat the loop for all entries in this bag
+		currentNode = firstNode;
+		while (currentNode != null)
+			// check if differenceBag contains the current entry of this bag
+			if (tempBag.contains(currentNode.data))
+				// remove the current entry from the differenceBag
+				tempBag.remove(currentNode.data);
+			else
+				currentNode = currentNode.next;
+
+		return union(differenceBag, tempBag);
 	}
 
 	private class Node
