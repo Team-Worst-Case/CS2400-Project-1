@@ -14,4 +14,6 @@ Unit test classes: ArrayBagTest.java and LinkedBagTest.java
 Screencast:
 // screencast link goes here
 
-// link to the Javadoc’s start page (index.html) (and instructions to access source code the repo, and Javadoc-produced documentation. Submit via Assignment Turn-in on Teams.)
+Documentation: https://key-wii.github.io/CS2400-Project-1/javadoc/index.html
+To access source code, check the repository below.
+Repository link: https://github.com/key-wii/CS2400-Project-1
