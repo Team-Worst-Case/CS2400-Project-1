@@ -220,7 +220,7 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       T[] others = otherBag.toArray();
 
       for (T elem : others)
-         if (result.contains(elem))
+         if (result.contains(elem) && !finalResult.contains(elem))
             finalResult.add(elem);
 
       return finalResult; 

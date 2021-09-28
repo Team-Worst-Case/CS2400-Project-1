@@ -4,7 +4,9 @@ Joseph Setiawan
 Roberto Tabares
 
 Contributions:
-// contributions here
+Christopher Gomez - LinkedBag, ResizeableArrayBag debugging, readability edits, javadoc edits
+Joseph Setiawan - BagInterface, ArrayBagTest, LinkedBagTest, LinkedBag time complexities
+Roberto Tabares - ResizeableArraybag, ResizeableArraybag time complexities
 
 Extra Features:
 // unit test class?
