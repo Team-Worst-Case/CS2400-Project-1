@@ -12,7 +12,7 @@ Extra Features:
 Unit test classes: ArrayBagTest.java and LinkedBagTest.java
 
 Screencast:
-// screencast link goes here
+https://youtu.be/DmmB7JktMlk
 
 Documentation: https://key-wii.github.io/CS2400-Project-1/javadoc/index.html
 To access source code, check the repository below.
