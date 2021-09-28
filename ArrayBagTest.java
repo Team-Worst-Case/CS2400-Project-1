@@ -24,6 +24,6 @@ public class ArrayBagTest
       System.out.println("Correct ouput: [b]" + "\n");
 
       System.out.println("difference:    " + Arrays.toString(b1.difference(b2).toArray()));
-      System.out.println("Correct ouput: [a, e, c, d]");
+      System.out.println("Correct ouput: [a, e, c, d, b]");
     }
 }

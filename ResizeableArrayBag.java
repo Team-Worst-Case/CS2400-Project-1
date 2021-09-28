@@ -232,15 +232,26 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
    public BagInterface <T> difference(BagInterface<T> otherBag)
    {
       BagInterface <T> result = new ResizeableArrayBag <>();
-      T[] mine = this.toArray();
+      BagInterface <T> temp = new ResizeableArrayBag <>();
+      T[] bag = this.toArray();
+      T[] others = otherBag.toArray();
 
-      for (T element : mine)
+      for (T element : bag)
          result.add(element);
       
-      T[] others = otherBag.toArray();
       for (T elem : others)
          if (result.contains(elem))
             result.remove(elem);
+
+      for (T element : others)
+         temp.add(element);
+      
+      for (T elem : bag)
+         if (temp.contains(elem))
+            temp.remove(elem);
+
+      for (int i = 0; i < temp.getCurrentSize(); i++)
+         result.add(temp.toArray()[i]);
             
       return result; 
    }
