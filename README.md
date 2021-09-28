@@ -9,7 +9,7 @@ Joseph Setiawan - BagInterface, ArrayBagTest, LinkedBagTest, LinkedBag time comp
 Roberto Tabares - ResizeableArraybag, ResizeableArraybag time complexities
 
 Extra Features:
-// unit test class?
+Unit test classes: ArrayBagTest.java and LinkedBagTest.java
 
 Screencast:
 // screencast link goes here
