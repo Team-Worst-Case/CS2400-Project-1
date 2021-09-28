@@ -15,15 +15,15 @@ public class ArrayBagTest
       b1.add("e");
 
       System.out.println("bag1: " + Arrays.toString(b1.toArray())); // print bag1 and bag2
-      System.out.println("bag2: " + Arrays.toString(b2.toArray()));
+      System.out.println("bag2: " + Arrays.toString(b2.toArray()) + "\n");
 
-      System.out.println("bag1 union bag2: " + Arrays.toString(b1.union(b2).toArray())); // test union, intersection, and difference method.
-      System.out.println("Correct ouput: [a, b, c, e, b, b, d]");
+      System.out.println("union:         " + Arrays.toString(b1.union(b2).toArray())); // test union, intersection, and difference method.
+      System.out.println("Correct ouput: [a, b, c, e, b, b, d]" + "\n");
 
-      System.out.println("bag1 intersection bag2: " + Arrays.toString(b1.intersection(b2).toArray()));
-      System.out.println("Correct ouput: [b]");
+      System.out.println("intersection:  " + Arrays.toString(b1.intersection(b2).toArray()));
+      System.out.println("Correct ouput: [b]" + "\n");
 
-      System.out.println("bag1 difference bag2: " + Arrays.toString(b1.difference(b2).toArray()));
+      System.out.println("difference:    " + Arrays.toString(b1.difference(b2).toArray()));
       System.out.println("Correct ouput: [a, e, c, d]");
     }
 }
