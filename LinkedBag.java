@@ -175,11 +175,11 @@ public final class LinkedBag<T> implements BagInterface<T>
 
 		int i;
 		// add entries to new bag from the second bag
-		for (i = 0; i < otherBag.getCurrentSize(); i++)
+		for (i = otherBag.getCurrentSize() - 1; i >= 0; i--)
 			unionBag.add(otherArray[i]);
 
 		// add entries to new from this bag
-		for (i = 0; i < numberOfEntries; i++)
+		for (i = numberOfEntries - 1; i >= 0; i--)
 			unionBag.add(array[i]);
 
 		return unionBag;
@@ -197,11 +197,11 @@ public final class LinkedBag<T> implements BagInterface<T>
 	  
 			  int i;
 			  // add entries to new bag from the second bag
-			  for (i = otherBag.getCurrentSize() - 1; i >= 0; i--)
+			  for (i = 0; i < otherBag.getCurrentSize(); i++)
 				  unionBag.add(otherArray[i]);
 
 			  // add entries to new from this bag
-			  for (i = aBag.getCurrentSize() - 1; i >= 0; i--)
+			  for (i = 0; i < aBag.getCurrentSize(); i++)
 				  unionBag.add(array[i]);
 	  
 			  return unionBag;
