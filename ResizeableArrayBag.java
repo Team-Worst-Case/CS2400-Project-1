@@ -186,25 +186,28 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
          throw new SecurityException("ArrayBag object is corrupt.");
    }
 
-   // Declare 'union' method.
+   /** Creates a new bag that combines the contents of this bag and otherBag.
+        @param otherBag The bag that is to be added.
+        @return  A combined bag */
    public BagInterface <T> union(BagInterface<T> otherBag)
    {
       BagInterface <T> result = new ResizeableArrayBag <>();
       
       T[] others = otherBag.toArray();
-      for (T elem: others) {
+      for (T elem: others)
          result.add(elem);
-      }
 
       T[] mine = this.toArray();
 
       for (T elem : mine)
-      {
          result.add(elem);
-      }
+
       return result; 
    }
-   // Declare 'intersection' method.
+
+   /** Creates a new bag that contains overlapping entries of this bag and otherBag.
+        @param otherBag The bag that is to be added.
+        @return A bag with overlapping entries */
    public BagInterface <T> intersection(BagInterface<T> otherBag)
    {
       BagInterface <T> result = new ResizeableArrayBag <>();
@@ -212,40 +215,33 @@ public final class ResizeableArrayBag<T> implements BagInterface<T>
       T[] mine = this.toArray();
 
       for (T elem : mine)
-      {
          result.add(elem);
-      }
 
       T[] others = otherBag.toArray();
 
       for (T elem : others)
-      {
          if (result.contains(elem))
-         {
             finalResult.add(elem);
-         }
-      }
+
       return finalResult; 
    }
-   //Declare 'difference' method.
+
+   /** Creates a new bag that contains only unique entries of this bag and otherBag.
+        @param otherBag The bag that is to be added.
+        @return A bag with unique entries */
    public BagInterface <T> difference(BagInterface<T> otherBag)
    {
       BagInterface <T> result = new ResizeableArrayBag <>();
       T[] mine = this.toArray();
 
       for (T element : mine)
-      {
          result.add(element);
-      }
       
       T[] others = otherBag.toArray();
       for (T elem : others)
-      {
          if (result.contains(elem))
-         {
             result.remove(elem);
-         }
-      }
+            
       return result; 
    }
    
